@@ -12,4 +12,12 @@ describe DockingStation do
       expect(station.release_bike.working?).to eq true
     end
   end
+
+  describe "#dock_bike" do
+    it { is_expected.to respond_to(:dock_bike) }
+
+    it "docks a used bike" do
+      expect(station.dock_bike(bike)).to eq "Your bike has successfully been docked."
+    end
+  end
 end
