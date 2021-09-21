@@ -20,4 +20,12 @@ describe DockingStation do
       expect(station.dock_bike(bike)).to eq "Your bike has successfully been docked."
     end
   end
+
+  describe "#show_bikes" do
+    it { is_expected.to respond_to(:show_bikes) }
+
+    it "shows a list of docked bikes" do
+      expect(station.show_bikes.empty?).to eq false
+    end
+  end
 end
