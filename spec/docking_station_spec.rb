@@ -2,9 +2,9 @@ require "docking_station"
 require "bike"
 
 describe DockingStation do
-  bike = Bike.new
   station = DockingStation.new
   describe "#release_bike" do
+    bike = Bike.new
     it { is_expected.to respond_to(:release_bike) }
 
     it "releases a working bike" do
@@ -13,19 +13,22 @@ describe DockingStation do
     end
   end
 
-  describe "#dock_bike" do
-    it { is_expected.to respond_to(:dock_bike) }
+  describe "#dock" do
+    bike = Bike.new
+    it { is_expected.to respond_to(:dock).with(1).argument }
 
     it "docks a used bike" do
-      expect(station.dock_bike(bike)).to eq "Your bike has successfully been docked."
+      expect(station.dock(bike)).to eq bike
     end
   end
 
-  describe "#show_bikes" do
-    it { is_expected.to respond_to(:show_bikes) }
+  describe "#bikes" do
+    bike = Bike.new
+    it { is_expected.to respond_to(:bike) }
 
     it "shows a list of docked bikes" do
-      expect(station.show_bikes.empty?).to eq false
+      station.dock(bike)
+      expect(station.bike).to eq bike
     end
   end
 end
