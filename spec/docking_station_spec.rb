@@ -50,7 +50,7 @@ describe DockingStation do
   it "does not release broken bikes" do
     station = DockingStation.new
     2.times { station.dock(Bike.new) }
-    station.dock(bike, false)
+    allow(bike).to receive(:dock) { false }
     expect { station.release_bike }.not_to raise_error
   end
 end

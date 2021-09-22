@@ -17,7 +17,6 @@ class DockingStation
     end
 
     @bikes.pop
-    
   end
 
   def dock(bike, is_working = true)
