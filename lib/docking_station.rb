@@ -1,21 +1,15 @@
 require "./lib/bike"
 
 class DockingStation
-  def initialize
-    @bikes = []
-  end
-
   def release_bike
-    @bike = Bike.new
+    Bike.new
+  end
+
+  def dock(bike)
+    @bike = bike
+  end
+
+  def bike
     @bike
-  end
-
-  def dock_bike(bike)
-    @bikes << bike
-    "Your bike has successfully been docked."
-  end
-
-  def show_bikes
-    @bikes
   end
 end
