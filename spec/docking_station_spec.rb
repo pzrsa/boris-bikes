@@ -44,4 +44,11 @@ describe DockingStation do
     2.times {station.dock(Bike.new)}
     expect {station.dock(Bike.new)}.to raise_error "No space left to dock"
   end
+
+  it "does not release broken bikes" do
+    station = DockingStation.new
+    2.times {station.dock(Bike.new)}
+    station.dock(Bike.new, false)
+    expect {station.release_bike}.not_to raise_error
+  end
 end

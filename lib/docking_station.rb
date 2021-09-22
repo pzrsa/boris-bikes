@@ -20,12 +20,13 @@ class DockingStation
     
   end
 
-  def dock(bike)
+  def dock(bike, is_working = true)
     if full?
       raise "No space left to dock"
     end
 
-    if !bike.working?
+    if !is_working
+      bike.report_broken
       @bikes.unshift(bike)
     else
       @bikes << bike
